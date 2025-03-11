@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Тест по Математике</title>
+  <link rel="stylesheet" href="math.css">
+</head>
+<body>
+  <div class="title">
+    <h1>Тест по Математике</h1>
+    <div class="names">
+      <p>Выполнил: Урозматов Алымбек <br>Проверил: Павел Сергеевич Панков</p>
+    </div>
+  </div>
+
+  <!-- Вопрос 1 -->
+  <div class="quiz-container" id="question1">
+    <div class="question-container">
+      <p>1. Сколько будет 12 + 15?</p>
+    </div>
+    <div class="answers-container">
+      <button class="answer" onclick="checkAnswer('A', 1)">A. Ответ 27</button>
+      <button class="answer" onclick="checkAnswer('B', 1)">B. Ответ 24</button>
+      <button class="answer" onclick="checkAnswer('C', 1)">C. Ответ 31 </button>
+    </div>
+    <div class="result-container">
+      <p id="result1"></p>
+    </div>
+  </div>
+
+  <!-- Вопрос 2 -->
+  <div class="quiz-container" id="question2">
+    <div class="question-container">
+      <p>2. Найдите значение выражения: 7 * (3 + 4).</p>
+    </div>
+    <div class="answers-container">
+      <button class="answer" onclick="checkAnswer('A', 2)">A. Ответ 14</button>
+      <button class="answer" onclick="checkAnswer('B', 2)">B. Ответ 49</button>
+      <button class="answer" onclick="checkAnswer('C', 2)">C. Ответ 27</button>
+    </div>
+    <div class="result-container">
+      <p id="result2"></p>
+    </div>
+  </div>
+
+  <!-- Вопрос 3 -->
+  <div class="quiz-container" id="question3">
+    <div class="question-container">
+      <p>3. Упростите выражение: 3x + 4x.</p>
+    </div>
+    <div class="answers-container">
+      <button class="answer" onclick="checkAnswer('A', 3)">A. Ответ 5x</button>
+      <button class="answer" onclick="checkAnswer('B', 3)">B. Ответ 10x</button>
+      <button class="answer" onclick="checkAnswer('C', 3)">C. Ответ 7x</button>
+    </div>
+    <div class="result-container">
+      <p id="result3"></p>
+    </div>
+  </div>
+
+  <!-- Вопрос 4 -->
+  <div class="quiz-container" id="question4">
+    <div class="question-container">
+      <p>4. Сколько будет 5 * (2 + 3)?</p>
+    </div>
+    <div class="answers-container">
+      <button class="answer" onclick="checkAnswer('A', 4)">A. Ответ 25</button>
+      <button class="answer" onclick="checkAnswer('B', 4)">B. Ответ 10</button>
+      <button class="answer" onclick="checkAnswer('C', 4)">C. Ответ 12</button>
+    </div>
+    <div class="result-container">
+      <p id="result4"></p>
+    </div>
+  </div>
+
+  <!-- Вопрос 5 -->
+  <div class="quiz-container" id="question5">
+    <div class="question-container">
+      <p>5. Решите уравнение: x - 5 = 10</p>
+    </div>
+    <div class="answers-container">
+      <button class="answer" onclick="checkAnswer('A', 5)">A. Ответ 5</button>
+      <button class="answer" onclick="checkAnswer('B', 5)">B. Ответ 15</button>
+      <button class="answer" onclick="checkAnswer('C', 5)">C. Ответ 10</button>
+    </div>
+    <div class="result-container">
+      <p id="result5"></p>
+    </div>
+  </div>
+
+  <!-- Вопрос 6 -->
+  <div class="quiz-container" id="question6">
+    <div class="question-container">
+      <p>6. Найдите значение выражения: 8²</p>
+    </div>
+    <div class="answers-container">
+      <button class="answer" onclick="checkAnswer('A', 6)">A. Ответ 64</button>
+      <button class="answer" onclick="checkAnswer('B', 6)">B. Ответ 32</button>
+      <button class="answer" onclick="checkAnswer('C', 6)">C. Ответ 48</button>
+    </div>
+    <div class="result-container">
+      <p id="result6"></p>
+    </div>
+  </div>
+
+  <!-- Вопрос 7 -->
+  <div class="quiz-container" id="question7">
+    <div class="question-container">
+      <p>7. Найдите значение выражения: 7² - 22.</p>
+    </div>
+    <div class="answers-container">
+      <button class="answer" onclick="checkAnswer('A', 7)">A. Ответ 49</button>
+      <button class="answer" onclick="checkAnswer('B', 7)">B. Ответ 14</button>
+      <button class="answer" onclick="checkAnswer('C', 7)">C. Ответ 27</button>
+    </div>
+    <div class="result-container">
+      <p id="result7"></p>
+    </div>
+  </div>
+
+  <!-- Вопрос 8 -->
+  <div class="quiz-container" id="question8">
+    <div class="question-container">
+      <p>8. Чему равен периметр квадрата со стороной 4 см?</p>
+    </div>
+    <div class="answers-container">
+      <button class="answer" onclick="checkAnswer('A', 8)">A. Ответ 16 см</button>
+      <button class="answer" onclick="checkAnswer('B', 8)">B. Ответ 12 см</button>
+      <button class="answer" onclick="checkAnswer('C', 8)">C. Ответ 20 см</button>
+    </div>
+    <div class="result-container">
+      <p id="result8"></p>
+    </div>
+  </div>
+
+  <!-- Вопрос 9 -->
+  <div class="quiz-container" id="question9">
+    <div class="question-container">
+      <p>9. Сколько будет 36 ÷ 6?</p>
+    </div>
+    <div class="answers-container">
+      <button class="answer" onclick="checkAnswer('A', 9)">A. Ответ 6</button>
+      <button class="answer" onclick="checkAnswer('B', 9)">B. Ответ 7</button>
+      <button class="answer" onclick="checkAnswer('C', 9)">C. Ответ 9</button>
+    </div>
+    <div class="result-container">
+      <p id="result9"></p>
+    </div>
+  </div>
+
+  <!-- Вопрос 10 -->
+  <div class="quiz-container" id="question10">
+    <div class="question-container">
+      <p>10. Найдите площадь прямоугольника, если его длина 8 см, а ширина 3 см.</p>
+    </div>
+    <div class="answers-container">
+      <button class="answer" onclick="checkAnswer('A', 10)">A. Ответ 25 см²</button>
+      <button class="answer" onclick="checkAnswer('B', 10)">B. Ответ 22 см²</button>
+      <button class="answer" onclick="checkAnswer('C', 10)">C. Ответ 26 см²</button>
+    </div>
+    <div class="result-container">
+      <p id="result10"></p>
+    </div>
+  </div>
+
+  <!-- Вопрос 11 -->
+  <div class="quiz-container" id="question11">
+    <div class="question-container">
+      <p>11. Чему равен площадь квадрата со стороной 11  см?</p>
+    </div>
+    <div class="answers-container">
+      <button class="answer" onclick="checkAnswer('A', 11)">A. Ответ 44 см</button>
+      <button class="answer" onclick="checkAnswer('B', 11)">B. Ответ 144 см</button>
+      <button class="answer" onclick="checkAnswer('C', 11)">C. Ответ 121 см</button>
+    </div>
+    <div class="result-container">
+      <p id="result11"></p>
+    </div>
+  </div>
+
+  <!-- Вопрос 12 -->
+  <div class="quiz-container" id="question12">
+    <div class="question-container">
+      <p>12. Найдите значение выражения: 2/5 * 98</p>
+    </div>
+    <div class="answers-container">
+      <button class="answer" onclick="checkAnswer('A', 12)">A. Ответ 39.6</button>
+      <button class="answer" onclick="checkAnswer('B', 12)">B. Ответ 37.3</button>
+      <button class="answer" onclick="checkAnswer('C', 12)">C. Ответ 31.9</button>
+    </div>
+    <div class="result-container">
+      <p id="result12"></p>
+    </div>
+  </div>
+
+  <!-- Кнопка для показа итогов -->
+
+  <div class="quiz-container">
+    <div class="result">
+      <p>Нажтите, чтобы узнать результат</p>      
+      <button onclick="showFinalResult()">Показать результаты</button>
+      <div class="final-score">
+        <p id="finalScore"></p>
+        <h2 id="finalResult"></h2>
+      </div>
+    </div>
+  </div>
+
+  <script src="math.js"></script>
+</body>
+</html>
