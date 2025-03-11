@@ -1,125 +1,99 @@
-const questions = [
-  // 1
-  {
-    question: "Сколько будет 12 + 15?",
-    correctAnswer: "A"
-  },
-  // 2
-  {
-    question: "Найдите значение выражения: 7 * (3 + 4).",
-    correctAnswer: "B"
-  },
-  // 3
-  {
-    question: "Упростите выражение: 3x + 4x.",
-    correctAnswer: "C"
-  },
-  // 4
-  {
-    question: "Сколько будет 5 * (2 + 3)?",
-    correctAnswer: "A"
-  },
-  // 5
-  {
-    question: "Решите уравнение: x - 5 = 10.",
-    correctAnswer: "B"
-  },
-  // 6
-  {
-    question: "Найдите значение выражения: 8².",
-    correctAnswer: "A"
-  },
-  // 7
-  {
-    question: "Найдите значение выражения: 7² - 22.",
-    correctAnswer: "C"
-  },
-  // 8
-  {
-    question: "Чему равен периметр квадрата со стороной 4 см?",
-    correctAnswer: "A"
-  },
-  // 9
-  {
-    question: "Сколько будет 36 ÷ 6?",
-    correctAnswer: "A"
-  },
-  // 10
-  {
-    question: "Найдите площадь прямоугольника, если его длина 8 см, а ширина 3 см.",
-    correctAnswer: "B"
-  },
-  // 11
-  {
-    question: "Чему равен площадь квадрата со стороной 11 см?",
-    correctAnswer: "C"
-  },
-  // 12
-  {
-    question: "Найдите значение выражения: 2/5 * 98.",
-    correctAnswer: "A"
-  },
-];
+let correctAnswers = 0;
+let currentTask = 0; // Счетчик задач
+const totalTasks = 10; // Всего задач
 
-let score = 0; 
+// Функция для генерации задачи
+function generateTask() {
+    // Генерация случайных чисел
+    const num1 = Math.floor(Math.random() * 11) + 10; // Случайное число от 10 до 20 для сложения/вычитания
+    const num2 = Math.floor(Math.random() * 11) + 10; // Случайное число от 10 до 20 для сложения/вычитания
+    const num3 = Math.floor(Math.random() * 9) + 2;  // Случайное число от 2 до 10 для умножения/деления
+    const num4 = Math.floor(Math.random() * 9) + 2;  // Случайное число от 2 до 10 для умножения/деления
 
-document.querySelector("button").addEventListener("click", showFinalScore, showFinalResult);
+    // Возможные операторы для сложения/вычитания
+    const operator1 = Math.random() < 0.5 ? '+' : '-';
+    // Возможные операторы для умножения/деления
+    const operator2 = Math.random() < 0.5 ? '*' : '/';
 
-function checkAnswer(selectedAnswer, questionNumber) {
-  const resultElement = document.getElementById(`result${questionNumber}`);
-  const currentQuestion = questions[questionNumber - 1];
+    // Генерация выражения с двумя операциями
+    let taskText = `${num1} ${operator1} ${num2} ${operator2} ${num3}`;
 
-  if (selectedAnswer === currentQuestion.correctAnswer) {
-    resultElement.textContent = "Правильный ответ!";
-    score++; 
-  } else {
-    resultElement.textContent = "Неправильный ответ!";
-  }
-}
-
-function showFinalScore() {
-  countScore(); 
-  const finalScoreElement = document.getElementById("finalScore");
-  finalScoreElement.textContent = `Вы набрали ${score} из ${questions.length} баллов.`;
-}
-
-
-
-
-function showFinalResult() {
-  countScore(); // Вычисляем итоговый балл
-  const finalScoreElement = document.getElementById("finalScore");
-  finalScoreElement.textContent = `Вы набрали ${score} из ${questions.length} баллов.`;
-  
-  const finalResultElement = document.getElementById("finalResult");
-
-  if (score <= 6) {
-    finalResultElement.textContent = `Ваш результат 2.`;
-  } else if (score <= 9) {
-    finalResultElement.textContent = `Ваш результат 3.`;
-  } else if (score <= 10) {
-    finalResultElement.textContent = `Ваш результат 4.`;
-  } else if (score == 12) {
-    finalResultElement.textContent = `Ваш результат 5.`;
-  } else {
-    finalResultElement.textContent = `Ваш результат 5.`;
-  }
-  localStorage.setItem('score', score);  
-  localStorage.setItem('totalQuestions', questions.length);
-  
-}
-
-function countScore() {
-  score = 0; 
-  const resultIds = [
-    'result1', 'result2', 'result3', 'result4', 'result5',
-    'result6', 'result7', 'result8', 'result9', 'result10',
-    'result11', 'result12'
-  ];
-
-  resultIds.forEach(resultId => {
-    if (document.getElementById(resultId).innerText === 'Правильный ответ!') {
-      score += 1; 
+    // Вычисление правильного ответа
+    let result;
+    switch(operator2) {
+        case '*':
+            result = num2 * num3;
+            break;
+        case '/':
+            result = num2 / num3;
+            break;
     }
-  });
+
+    // Для сложения или вычитания
+    switch(operator1) {
+        case '+':
+            correctAnswer = num1 + result;
+            break;
+        case '-':
+            correctAnswer = num1 - result;
+            break;
+    }
+
+    // Показать задачу на экране
+    document.getElementById('task').textContent = `Решите: ${taskText}`;
+    document.getElementById('result').textContent = '';
+    document.getElementById('answer').value = ''; // Очистить поле ввода
+    document.getElementById('answer').disabled = false; // Включаем поле ввода
 }
+
+// Функция для проверки ответа
+function checkAnswer() {
+    const userAnswer = parseFloat(document.getElementById('answer').value);
+    if (userAnswer === correctAnswer) {
+        document.getElementById('result').textContent = 'Правильный ответ!';
+        correctAnswers++; // Увеличиваем количество правильных ответов
+    } else {
+        document.getElementById('result').textContent = 'Неправильный ответ!';
+    }
+
+    currentTask++; // Увеличиваем счетчик задач
+
+    // Обновляем счет задач
+    document.getElementById('score').textContent = `Задач решено: ${currentTask} из ${totalTasks}`;
+
+    // Если решено 10 задач, показываем финальный результат
+    if (currentTask >= totalTasks) {
+        showFinalResult();
+    } else {
+        // После проверки ответа, блокируем поле ввода и не даем исправить ответ
+        document.getElementById('answer').disabled = true; 
+
+        // Переходим к следующей задаче через небольшую задержку
+        setTimeout(generateTask, 2000); // Генерация следующей задачи через 1 секунду
+    }
+}
+
+// Функция для отображения финального результата и оценки
+function showFinalResult() {
+    document.getElementById('task').textContent = 'Вы выполнили все задачи!';
+    document.getElementById('result').textContent = `Ваш результат: ${correctAnswers} из ${totalTasks}.`;
+
+    // Определение оценки
+    let grade;
+    if (correctAnswers >= 8) {
+        grade = 5;
+    } else if (correctAnswers >= 7) {
+        grade = 4;
+    } else if (correctAnswers >= 6) {
+        grade = 3;
+    } else {
+        grade = 2;
+    }
+
+    document.getElementById('score').textContent += ` Оценка: ${grade}`;
+    document.getElementById('answer').disabled = true; // Отключаем поле для ввода
+    document.querySelector('button').disabled = true; // Отключаем кнопку "Проверить"
+}
+
+// Генерируем первую задачу при загрузке страницы
+generateTask();
